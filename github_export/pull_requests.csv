@@ -1,0 +1,27 @@
+number,title,state,created_at,updated_at,closed_at,merged_at,author,labels,url,comments_count
+1319,"add files a, b and c",closed,2024-10-12T18:01:56Z,2024-10-12T18:02:43Z,2024-10-12T18:02:43Z,,stx85,,https://github.com/rbei-etas/busmaster/pull/1319,0
+1300,Show ASCII text string in UDS response window,open,2023-07-11T01:32:10Z,2023-07-11T01:32:10Z,,,saerpa,,https://github.com/rbei-etas/busmaster/pull/1300,0
+1241,Update Readme.txt,open,2019-11-01T13:22:01Z,2019-11-01T15:18:37Z,,,Coarist,,https://github.com/rbei-etas/busmaster/pull/1241,1
+1189,Support now new VCI V4 drivers and multiple CAN channels,open,2018-10-05T13:00:47Z,2018-10-05T13:00:47Z,,,IXXAT-wucherer,,https://github.com/rbei-etas/busmaster/pull/1189,0
+1184,DBC2DBF changes,open,2018-09-07T20:10:56Z,2022-12-08T10:41:19Z,,,jwinarske,,https://github.com/rbei-etas/busmaster/pull/1184,1
+1145,Clean CAN_NSI.vcxproj,open,2018-01-23T20:02:33Z,2018-01-23T20:02:33Z,,,jogo-,,https://github.com/rbei-etas/busmaster/pull/1145,0
+1143,Clean CAN_NSI.vcxproj,open,2018-01-17T08:21:36Z,2018-01-17T08:21:36Z,,,jogo-,,https://github.com/rbei-etas/busmaster/pull/1143,0
+1137,"Fix some issues for the use of NSI devices, including #1072 issue",open,2018-01-15T09:34:10Z,2018-01-23T20:05:12Z,,,MelissaA74,,https://github.com/rbei-etas/busmaster/pull/1137,3
+1136,Fix simulated systems includes typos,open,2018-01-14T16:53:01Z,2018-01-17T07:58:58Z,,,jogo-,,https://github.com/rbei-etas/busmaster/pull/1136,0
+1116,Fix transmission of signals by Test Automation Executor,open,2017-11-01T08:16:49Z,2019-10-03T13:36:21Z,,,itiserik,,https://github.com/rbei-etas/busmaster/pull/1116,1
+1099,Fix Transmission of messages by Test Automation Executor,closed,2017-08-22T12:17:16Z,2017-10-31T13:52:33Z,2017-10-31T13:52:04Z,,itiserik,,https://github.com/rbei-etas/busmaster/pull/1099,1
+966,Added support for CAN Saint hardware,open,2016-07-27T20:13:52Z,2017-06-19T06:08:57Z,,,rileyshaw,1.4 other (support),https://github.com/rbei-etas/busmaster/pull/966,1
+965,Polished LDFEditor and LDFViewer,closed,2016-07-26T17:49:02Z,2020-01-25T13:59:45Z,2020-01-25T13:59:45Z,,martonmiklos,1.4 other (support),https://github.com/rbei-etas/busmaster/pull/965,0
+863,fix the Japanese in IDM_SUNSYS_ADDNODE,open,2015-11-10T06:09:47Z,2015-12-08T07:26:40Z,,,ramesses2nd,1.4 other (support),https://github.com/rbei-etas/busmaster/pull/863,0
+847,Qrcan,closed,2015-09-28T08:18:32Z,2015-10-08T11:40:36Z,2015-09-28T08:18:50Z,,elupus,1.4 other (support),https://github.com/rbei-etas/busmaster/pull/847,2
+810,add Kvaser LIN Device Driver,open,2015-07-01T06:41:55Z,2015-08-21T00:32:05Z,,,uincore,1.2 minor improvement,https://github.com/rbei-etas/busmaster/pull/810,0
+768,Fix log file playback delay,open,2015-01-26T12:01:23Z,2015-10-30T11:17:03Z,,,PBjore,1.2 minor improvement,https://github.com/rbei-etas/busmaster/pull/768,1
+767,Support of Gigatronik GIGABOX flex-i,closed,2014-12-12T13:47:34Z,2015-03-18T04:35:17Z,2015-03-18T04:35:17Z,,gt-morgott,1.2 minor improvement,https://github.com/rbei-etas/busmaster/pull/767,1
+748,CAN_VSCOM: bump API to 1.7.1,closed,2014-08-25T07:37:39Z,2015-01-09T07:15:19Z,2014-08-25T17:20:02Z,,yegorich,1.3 patch (defect);3.3 low priority (EC3),https://github.com/rbei-etas/busmaster/pull/748,0
+747,Cppcheck,closed,2014-08-21T10:08:15Z,2015-01-09T07:15:26Z,2014-08-21T11:38:01Z,,yegorich,1.3 patch (defect);3.3 low priority (EC3),https://github.com/rbei-etas/busmaster/pull/747,0
+745,CAN_VSCOM: change error message to reflect new menu structure,closed,2014-08-19T12:15:47Z,2015-01-09T07:15:29Z,2014-08-20T08:12:11Z,,yegorich,1.3 patch (defect);3.3 low priority (EC3),https://github.com/rbei-etas/busmaster/pull/745,0
+742,Ethernet support for BUSMASTER,closed,2014-08-01T07:51:17Z,2014-11-13T09:23:02Z,2014-08-21T11:40:38Z,,RBEI-AshwinRU,1.1 major improvement,https://github.com/rbei-etas/busmaster/pull/742,3
+728,First modifications to #13,closed,2014-07-15T16:54:12Z,2014-08-21T11:41:06Z,2014-08-21T11:40:16Z,,GT-Derka,1.2 minor improvement,https://github.com/rbei-etas/busmaster/pull/728,2
+713,Solves #711,closed,2014-06-24T14:46:07Z,2014-08-21T11:41:36Z,2014-06-24T14:47:13Z,,GT-Derka,1.2 minor improvement,https://github.com/rbei-etas/busmaster/pull/713,0
+700,Channel-Selection for Test Automation,closed,2014-05-21T13:54:41Z,2014-08-21T11:41:51Z,2014-06-04T09:01:57Z,,GT-Derka,1.2 minor improvement,https://github.com/rbei-etas/busmaster/pull/700,0
+557,Include iView VCI Interface,closed,2013-07-15T15:59:52Z,2023-07-31T07:29:13Z,2013-09-06T12:08:32Z,,dizmal,1.2 minor improvement,https://github.com/rbei-etas/busmaster/pull/557,3
