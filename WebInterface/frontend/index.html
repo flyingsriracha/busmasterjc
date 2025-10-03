@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BUSMASTER Modernization Explorer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="title-group">
+        <h1>BUSMASTER Modernization Explorer</h1>
+        <p class="subtitle">
+          Browse the GitHub issues and pull requests that shape the modernization
+          roadmap, all from your browser.
+        </p>
+      </div>
+      <nav class="header-actions">
+        <button id="reload-cache" type="button">Reload data</button>
+        <span id="reload-status" role="status" aria-live="polite"></span>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card" id="stats">
+        <h2>Repository snapshot</h2>
+        <div class="stats-grid" id="stats-grid"></div>
+        <div class="label-cloud" id="label-cloud" aria-live="polite"></div>
+      </section>
+
+      <section class="card" id="issue-explorer">
+        <div class="card-header">
+          <h2>Issue explorer</h2>
+          <form id="issue-filters" class="filters" autocomplete="off">
+            <label>
+              State
+              <select name="state">
+                <option value="open" selected>Open</option>
+                <option value="closed">Closed</option>
+                <option value="all">All</option>
+              </select>
+            </label>
+            <label>
+              Label
+              <select name="label">
+                <option value="">All labels</option>
+              </select>
+            </label>
+            <label class="search">
+              <span>Search</span>
+              <input
+                type="search"
+                name="search"
+                placeholder="Title or description"
+                maxlength="120"
+              />
+            </label>
+            <button type="submit">Apply</button>
+          </form>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Labels</th>
+                <th scope="col">State</th>
+                <th scope="col">Updated</th>
+              </tr>
+            </thead>
+            <tbody id="issues-body"></tbody>
+          </table>
+        </div>
+        <footer class="pager" id="issue-pager"></footer>
+      </section>
+
+      <section class="card" id="pull-requests">
+        <div class="card-header">
+          <h2>Pull requests</h2>
+          <form id="pr-filters" class="filters" autocomplete="off">
+            <label>
+              State
+              <select name="state">
+                <option value="all" selected>All</option>
+                <option value="open">Open</option>
+                <option value="closed">Closed</option>
+              </select>
+            </label>
+            <label class="search">
+              <span>Search</span>
+              <input
+                type="search"
+                name="search"
+                placeholder="Title or description"
+                maxlength="120"
+              />
+            </label>
+            <button type="submit">Apply</button>
+          </form>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">State</th>
+                <th scope="col">Updated</th>
+              </tr>
+            </thead>
+            <tbody id="prs-body"></tbody>
+          </table>
+        </div>
+        <footer class="pager" id="pr-pager"></footer>
+      </section>
+    </main>
+
+    <template id="issue-row-template">
+      <tr>
+        <td class="mono"></td>
+        <td class="title"></td>
+        <td class="labels"></td>
+        <td class="state"></td>
+        <td class="updated"></td>
+      </tr>
+    </template>
+
+    <template id="pr-row-template">
+      <tr>
+        <td class="mono"></td>
+        <td class="title"></td>
+        <td class="state"></td>
+        <td class="updated"></td>
+      </tr>
+    </template>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

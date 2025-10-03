@@ -1,0 +1,28 @@
+{
+  "name": "busmaster-web-tests",
+  "version": "0.1.0",
+  "description": "Test suite for BUSMASTER Web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "test:backend": "vitest run backend",
+    "test:frontend": "vitest run frontend",
+    "test:integration": "vitest run integration",
+    "test:e2e": "playwright test",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest watch"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/node": "^22.10.5",
+    "@vitest/coverage-v8": "^2.1.8",
+    "jsdom": "^25.0.1",
+    "socket.io-client": "^4.8.1",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
