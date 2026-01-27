@@ -1,0 +1,13 @@
+[package]
+name = "busmaster-dil"
+description = "Driver Interface Layer traits for BUSMASTER"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+busmaster-core = { path = "../busmaster-core" }
+thiserror.workspace = true
+serde = { workspace = true, features = ["derive"] }

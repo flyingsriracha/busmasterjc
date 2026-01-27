@@ -1,0 +1,68 @@
+# BUSMASTER cargo-deny Configuration
+# REQ-QUAL-004: cargo audit shows no vulnerabilities
+#
+# Run with: cargo deny check
+
+[advisories]
+# The database of advisories to check against
+db-path = "~/.cargo/advisory-db"
+# URL to the advisory database
+url = "https://github.com/rustsec/advisory-db"
+# How to handle advisories
+vulnerability = "deny"
+unmaintained = "warn"
+yanked = "warn"
+notice = "warn"
+# Ignore specific advisories (none for now)
+ignore = []
+
+[licenses]
+# List of allowed licenses
+allow = [
+    "MIT",
+    "Apache-2.0",
+    "Apache-2.0 WITH LLVM-exception",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "Zlib",
+    "0BSD",
+    "Unicode-DFS-2016",
+    "Unlicense",
+    "MPL-2.0",
+]
+# Confidence threshold for license detection
+confidence-threshold = 0.8
+# Clarify licenses for specific crates
+clarify = []
+
+[bans]
+# Lint level for multiple versions of the same crate
+multiple-versions = "warn"
+# Lint level for wildcard dependencies
+wildcards = "deny"
+# Allow specific duplicate crates
+allow = []
+# Deny specific crates
+deny = [
+    # Unmaintained crates
+    { name = "openssl", wrappers = [] },
+]
+# Skip specific crates in duplicate detection
+skip = []
+# Skip tree for specific crates
+skip-tree = []
+
+[sources]
+# Lint level for unknown registries
+unknown-registry = "deny"
+# Lint level for unknown git sources
+unknown-git = "warn"
+# List of allowed registries
+allow-registry = ["https://github.com/rust-lang/crates.io-index"]
+# List of allowed git sources
+allow-git = []
+
+[sources.allow-org]
+# Allow crates from specific GitHub orgs
+github = []

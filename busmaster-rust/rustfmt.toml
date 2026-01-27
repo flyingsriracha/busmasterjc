@@ -1,0 +1,70 @@
+# BUSMASTER Rust Formatting Configuration
+# REQ-QUAL-002: cargo fmt applied to all code
+
+# Use Rust 2021 edition style
+edition = "2021"
+
+# Maximum line width
+max_width = 100
+
+# Use spaces, not tabs
+hard_tabs = false
+tab_spaces = 4
+
+# Newline style (native for cross-platform)
+newline_style = "Auto"
+
+# Import grouping and ordering
+imports_granularity = "Module"
+group_imports = "StdExternalCrate"
+reorder_imports = true
+reorder_modules = true
+
+# Function formatting
+fn_params_layout = "Tall"
+fn_single_line = false
+
+# Control flow formatting
+control_brace_style = "AlwaysSameLine"
+brace_style = "SameLineWhere"
+
+# Comment formatting
+wrap_comments = true
+comment_width = 80
+normalize_comments = true
+normalize_doc_attributes = true
+
+# Match arm formatting
+match_arm_blocks = true
+match_arm_leading_pipes = "Never"
+match_block_trailing_comma = true
+
+# Struct formatting
+struct_lit_single_line = true
+struct_variant_width = 35
+
+# Use field init shorthand
+use_field_init_shorthand = true
+
+# Use try shorthand (?)
+use_try_shorthand = true
+
+# Format string literals
+format_strings = false
+
+# Format macro bodies
+format_macro_matchers = true
+format_macro_bodies = true
+
+# Overflow behavior
+overflow_delimited_expr = false
+
+# Trailing semicolons
+trailing_semicolon = true
+
+# Blank lines
+blank_lines_lower_bound = 0
+blank_lines_upper_bound = 1
+
+# Where clause formatting
+where_single_line = false

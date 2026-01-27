@@ -1,0 +1,24 @@
+# BUSMASTER Rust Toolchain Configuration
+# Ensures consistent Rust version across all developers and CI
+
+[toolchain]
+# Use stable channel
+channel = "stable"
+
+# Components to install
+components = [
+    "rustfmt",      # Code formatting
+    "clippy",       # Linting
+    "rust-src",     # Source code for IDE support
+    "rust-analyzer", # Language server
+    "llvm-tools-preview", # For coverage
+]
+
+# Targets to install (MVP: macOS only)
+targets = [
+    "x86_64-apple-darwin",
+    "aarch64-apple-darwin",
+]
+
+# Profile (default is fine)
+profile = "default"

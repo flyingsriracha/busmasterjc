@@ -1,0 +1,25 @@
+[package]
+name = "busmaster-platform"
+description = "Platform abstraction layer for BUSMASTER"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+busmaster-core = { path = "../busmaster-core" }
+thiserror.workspace = true
+
+[target.'cfg(target_os = "macos")'.dependencies]
+# macOS-specific dependencies
+# Using system_profiler command for USB enumeration (no unsafe FFI needed)
+
+[target.'cfg(target_os = "windows")'.dependencies]
+# Windows-specific dependencies will go here
+
+[target.'cfg(target_os = "linux")'.dependencies]
+# Linux-specific dependencies will go here
+
+[dev-dependencies]
+proptest.workspace = true

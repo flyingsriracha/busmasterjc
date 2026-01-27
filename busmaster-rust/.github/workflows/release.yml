@@ -1,0 +1,88 @@
+# BUSMASTER Rust Release Pipeline
+#
+# This workflow creates releases when tags are pushed.
+# Builds binaries for macOS (MVP), with Windows/Linux in Phase 4.
+
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+env:
+  CARGO_TERM_COLOR: always
+
+defaults:
+  run:
+    working-directory: source/busmaster-rust
+
+jobs:
+  # Create GitHub release
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+    steps:
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: BUSMASTER Rust ${{ github.ref }}
+          draft: true
+          prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') }}
+
+  # Build for macOS (MVP target)
+  build-macos:
+    name: Build macOS
+    needs: create-release
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        target: [x86_64-apple-darwin, aarch64-apple-darwin]
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-action@stable
+        with:
+          targets: ${{ matrix.target }}
+      
+      - name: Build release binary
+        run: cargo build --release --target ${{ matrix.target }}
+      
+      - name: Package binary
+        run: |
+          mkdir -p dist
+          cp target/${{ matrix.target }}/release/busmaster dist/
+          cp target/${{ matrix.target }}/release/busmaster-tui dist/ || true
+          cd dist
+          tar -czvf busmaster-${{ matrix.target }}.tar.gz *
+      
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create-release.outputs.upload_url }}
+          asset_path: source/busmaster-rust/dist/busmaster-${{ matrix.target }}.tar.gz
+          asset_name: busmaster-${{ matrix.target }}.tar.gz
+          asset_content_type: application/gzip
+
+  # Build for Linux (Phase 4)
+  # build-linux:
+  #   name: Build Linux
+  #   needs: create-release
+  #   runs-on: ubuntu-latest
+  #   ...
+
+  # Build for Windows (Phase 4)
+  # build-windows:
+  #   name: Build Windows
+  #   needs: create-release
+  #   runs-on: windows-latest
+  #   ...

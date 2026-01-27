@@ -1,0 +1,16 @@
+[package]
+name = "busmaster-log"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+busmaster-core = { path = "../busmaster-core" }
+thiserror.workspace = true
+chrono.workspace = true
+flate2 = "1.0"
+
+[dev-dependencies]
+tempfile = "3.8"

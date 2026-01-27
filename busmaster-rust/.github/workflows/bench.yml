@@ -1,0 +1,96 @@
+# BUSMASTER Rust Benchmark Workflow
+#
+# Runs benchmarks and compares against baseline to detect regressions.
+
+name: Benchmarks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'source/busmaster-rust/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'source/busmaster-rust/**'
+
+env:
+  CARGO_TERM_COLOR: always
+
+defaults:
+  run:
+    working-directory: source/busmaster-rust
+
+jobs:
+  benchmark:
+    name: Performance Benchmarks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-action@stable
+      
+      - name: Cache cargo registry
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            source/busmaster-rust/target
+          key: ${{ runner.os }}-cargo-bench-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-bench-
+      
+      - name: Run benchmarks
+        run: cargo bench --all-features -- --noplot
+      
+      - name: Store benchmark result
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          name: BUSMASTER Rust Benchmarks
+          tool: 'cargo'
+          output-file-path: source/busmaster-rust/target/criterion/*/new/estimates.json
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          auto-push: ${{ github.ref == 'refs/heads/main' }}
+          alert-threshold: '150%'
+          comment-on-alert: true
+          fail-on-alert: false
+          alert-comment-cc-users: '@rbei-etas/busmaster-maintainers'
+
+  # Compare PR benchmarks against main
+  compare:
+    name: Compare Benchmarks
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-action@stable
+      
+      - name: Install critcmp
+        run: cargo install critcmp
+      
+      - name: Checkout main branch
+        run: git checkout main
+      
+      - name: Run baseline benchmarks
+        run: |
+          cd source/busmaster-rust
+          cargo bench --all-features -- --save-baseline main --noplot
+      
+      - name: Checkout PR branch
+        run: git checkout ${{ github.head_ref }}
+      
+      - name: Run PR benchmarks
+        run: |
+          cd source/busmaster-rust
+          cargo bench --all-features -- --save-baseline pr --noplot
+      
+      - name: Compare benchmarks
+        run: |
+          cd source/busmaster-rust
+          critcmp main pr

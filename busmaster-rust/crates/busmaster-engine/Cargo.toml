@@ -1,0 +1,22 @@
+[package]
+name = "busmaster-engine"
+description = "Main orchestration engine for BUSMASTER"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+busmaster-core.workspace = true
+busmaster-dil.workspace = true
+busmaster-db.workspace = true
+busmaster-log.workspace = true
+thiserror.workspace = true
+tokio = { workspace = true, features = ["full"] }
+tracing.workspace = true
+
+[dev-dependencies]
+busmaster-hardware.workspace = true
+busmaster-platform = { path = "../busmaster-platform" }
+tokio-test.workspace = true

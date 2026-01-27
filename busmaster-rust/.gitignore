@@ -1,0 +1,62 @@
+# BUSMASTER Rust .gitignore
+
+# Rust build artifacts
+/target/
+**/*.rs.bk
+Cargo.lock
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Coverage reports
+*.profraw
+*.profdata
+lcov.info
+coverage/
+tarpaulin-report.html
+
+# Benchmark results
+criterion/
+
+# Documentation build
+/target/doc/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Log files
+*.log
+logs/
+
+# Test artifacts
+test-output/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Binary files (keep in releases)
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Package files
+*.tar.gz
+*.zip
+
+# Fuzz corpus (can be large)
+fuzz/corpus/
+fuzz/artifacts/

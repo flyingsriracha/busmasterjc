@@ -1,0 +1,16 @@
+[package]
+name = "busmaster-benches"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[[bench]]
+name = "frame_bench"
+harness = false
+
+[dependencies]
+busmaster-core = { path = "../busmaster-core" }
+busmaster-proto = { path = "../busmaster-proto" }
+
+[dev-dependencies]
+criterion.workspace = true

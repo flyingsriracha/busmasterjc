@@ -1,0 +1,81 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "crates/busmaster-core",
+    "crates/busmaster-proto",
+    "crates/busmaster-dil",
+    "crates/busmaster-hardware",
+    "crates/busmaster-db",
+    "crates/busmaster-log",
+    "crates/busmaster-engine",
+    "crates/busmaster-cli",
+    "crates/busmaster-tui",
+    "crates/busmaster-platform",
+    "crates/busmaster-benches",
+    "crates/busmaster-gui",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["JC"]
+license = "LGPL-3.0"
+repository = "https://github.com/rbei-etas/busmaster"
+rust-version = "1.75"
+
+[workspace.dependencies]
+# Core dependencies
+thiserror = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.35", features = ["full"] }
+tokio-test = "0.4"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Internal crates
+busmaster-core = { path = "crates/busmaster-core" }
+busmaster-proto = { path = "crates/busmaster-proto" }
+busmaster-dil = { path = "crates/busmaster-dil" }
+busmaster-hardware = { path = "crates/busmaster-hardware" }
+busmaster-db = { path = "crates/busmaster-db" }
+busmaster-log = { path = "crates/busmaster-log" }
+busmaster-engine = { path = "crates/busmaster-engine" }
+
+# CLI/TUI
+clap = { version = "4.4", features = ["derive"] }
+ratatui = "0.25"
+crossterm = "0.27"
+
+# Testing
+proptest = "1.4"
+criterion = "0.5"
+
+# Concurrency
+parking_lot = "0.12"
+
+# Parsing
+nom = "7.1"
+pest = "2.7"
+pest_derive = "2.7"
+
+# Time handling
+chrono = "0.4"
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[profile.dev]
+opt-level = 0
+debug = true
+
+[profile.test]
+opt-level = 0
+debug = true
+
+[profile.bench]
+lto = true
+codegen-units = 1

@@ -1,0 +1,29 @@
+# BUSMASTER Rust Clippy Configuration
+# REQ-QUAL-001: cargo clippy passes with no warnings
+
+# Cognitive complexity threshold
+cognitive-complexity-threshold = 25
+
+# Maximum function lines
+too-many-lines-threshold = 100
+
+# Maximum arguments
+too-many-arguments-threshold = 7
+
+# Type complexity threshold
+type-complexity-threshold = 250
+
+# Trivial copy size limit (bytes)
+trivial-copy-size-limit = 16
+
+# Single char binding names to allow
+allowed-idents-below-min-chars = ["i", "j", "k", "n", "x", "y", "z", "id"]
+
+# MSRV (Minimum Supported Rust Version)
+msrv = "1.75"
+
+# Disallowed methods (none for now)
+# disallowed-methods = []
+
+# Disallowed types (none for now)
+# disallowed-types = []

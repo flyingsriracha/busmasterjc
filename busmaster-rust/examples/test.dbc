@@ -1,0 +1,57 @@
+VERSION ""
+
+NS_ :
+  NS_DESC_
+  CM_
+  BA_DEF_
+  BA_
+  VAL_
+  CAT_DEF_
+  CAT_
+  FILTER
+  BA_DEF_DEF_
+  EV_DATA_
+  ENVVAR_DATA_
+  SGTYPE_
+  SGTYPE_VAL_
+  BA_DEF_SGTYPE_
+  BA_SGTYPE_
+  SIG_TYPE_REF_
+  VAL_TABLE_
+  SIG_GROUP_
+  SIG_VALTYPE_
+  SIGTYPE_VALTYPE_
+  BO_TX_BU_
+  BA_DEF_REL_
+  BA_REL_
+  BA_SGTYPE_REL_
+  SG_MUL_VAL_
+
+BS_:
+
+BU_: ECU1 ECU2 ECU3
+
+BO_ 256 EngineData: 8 ECU1
+ SG_ EngineSpeed : 0|16@1+ (0.25,0) [0|16383.75] "rpm" ECU2
+ SG_ EngineTemp : 16|8@1+ (1,-40) [-40|215] "degC" ECU2
+ SG_ ThrottlePos : 24|8@1+ (0.392157,0) [0|100] "%" ECU2
+
+BO_ 512 VehicleSpeed: 8 ECU1
+ SG_ Speed : 0|16@1+ (0.01,0) [0|655.35] "km/h" ECU2
+ SG_ Odometer : 16|32@1+ (0.1,0) [0|429496729.5] "km" ECU2
+
+BO_ 768 BrakeStatus: 4 ECU2
+ SG_ BrakePressure : 0|16@1+ (0.1,0) [0|6553.5] "bar" ECU1
+ SG_ ABSActive : 16|1@1+ (1,0) [0|1] "" ECU1
+
+CM_ BU_ ECU1 "Engine Control Unit";
+CM_ BU_ ECU2 "Body Control Unit";
+CM_ BU_ ECU3 "Transmission Control Unit";
+CM_ BO_ 256 "Engine data including speed, temperature, and throttle position";
+CM_ BO_ 512 "Vehicle speed and odometer reading";
+CM_ BO_ 768 "Brake system status";
+CM_ SG_ 256 EngineSpeed "Engine rotational speed";
+CM_ SG_ 256 EngineTemp "Engine coolant temperature";
+CM_ SG_ 512 Speed "Vehicle speed";
+
+VAL_ 768 ABSActive 0 "Inactive" 1 "Active";

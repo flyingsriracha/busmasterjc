@@ -1,0 +1,22 @@
+[package]
+name = "busmaster-cli"
+description = "Command-line interface for BUSMASTER"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "busmaster"
+path = "src/main.rs"
+
+[dependencies]
+busmaster-core = { path = "../busmaster-core" }
+busmaster-dil = { path = "../busmaster-dil" }
+busmaster-engine = { path = "../busmaster-engine" }
+busmaster-hardware = { path = "../busmaster-hardware" }
+clap.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true

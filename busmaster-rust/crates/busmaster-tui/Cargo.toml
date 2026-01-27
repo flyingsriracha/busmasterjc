@@ -1,0 +1,23 @@
+[package]
+name = "busmaster-tui"
+description = "Terminal UI for BUSMASTER"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "busmaster-tui"
+path = "src/main.rs"
+
+[dependencies]
+busmaster-core = { path = "../busmaster-core" }
+busmaster-dil = { path = "../busmaster-dil" }
+busmaster-engine = { path = "../busmaster-engine" }
+busmaster-hardware = { path = "../busmaster-hardware" }
+ratatui.workspace = true
+crossterm.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true

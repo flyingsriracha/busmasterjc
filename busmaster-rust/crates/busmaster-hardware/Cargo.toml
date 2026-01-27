@@ -1,0 +1,24 @@
+[package]
+name = "busmaster-hardware"
+description = "Hardware driver implementations for BUSMASTER"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+busmaster-core = { path = "../busmaster-core" }
+busmaster-dil = { path = "../busmaster-dil" }
+thiserror.workspace = true
+parking_lot = "0.12"
+tokio = { workspace = true, features = ["net", "io-util", "sync", "rt", "macros"] }
+serde = { workspace = true, features = ["derive"] }
+bincode = "1.3"
+tracing.workspace = true
+async-trait = "0.1"
+
+[dev-dependencies]
+proptest.workspace = true
+tracing-subscriber = "0.3"
+tokio = { workspace = true, features = ["net", "io-util", "sync", "rt", "macros", "signal"] }

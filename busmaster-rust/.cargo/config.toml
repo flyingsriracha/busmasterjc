@@ -1,0 +1,53 @@
+# BUSMASTER Cargo Configuration
+
+[alias]
+# Quick check
+c = "check"
+# Run all tests
+t = "test --all-features --workspace"
+# Run clippy with all warnings
+l = "clippy --all-targets --all-features -- -D warnings"
+# Format all code
+f = "fmt --all"
+# Build release
+r = "build --release"
+# Run benchmarks
+b = "bench"
+# Generate docs
+d = "doc --no-deps --all-features --workspace"
+# Full CI check locally
+ci = "xtask ci"
+
+[build]
+# Use all available cores
+jobs = -1
+
+# Incremental compilation for faster rebuilds
+incremental = true
+
+[target.x86_64-apple-darwin]
+# macOS Intel settings
+rustflags = ["-C", "target-cpu=native"]
+
+[target.aarch64-apple-darwin]
+# macOS Apple Silicon settings
+rustflags = ["-C", "target-cpu=native"]
+
+[target.x86_64-unknown-linux-gnu]
+# Linux settings
+rustflags = ["-C", "target-cpu=native"]
+
+# Future: Windows settings
+# [target.x86_64-pc-windows-msvc]
+# rustflags = ["-C", "target-cpu=native"]
+
+[env]
+# Enable backtraces in debug builds
+RUST_BACKTRACE = { value = "1", force = false }
+
+[net]
+# Retry failed downloads
+retry = 3
+
+# Git fetch with CLI (more reliable)
+git-fetch-with-cli = true
